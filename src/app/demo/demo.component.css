@@ -4,3 +4,7 @@ mat-grid-tile {
 .mat-list-icon {
     color: rgba(0, 0, 0, 0.54);
 }
+
+.example-chip-list {
+    width: 100%;
+}

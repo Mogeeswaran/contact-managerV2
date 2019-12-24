@@ -1,8 +1,7 @@
-import { NgModule,Component, ElementRef, ViewChild } from '@angular/core';
+import { NgModule  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-
-// // material modules
+//  material modules
 import { MatSliderModule } from '@angular/material/slider';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -10,19 +9,20 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule, MatInputModule} from '@angular/material';
-// import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatChipsModule,MatChipInputEvent} from '@angular/material/chips';
-import {FormControl} from '@angular/forms';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
+import {MatNativeDateModule } from '@angular/material';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+
 
 
 
 
 @NgModule({
-  // declarations: [],--->not needed for manual module
+   // declarations: [],--->not needed for manual module
   imports: [
     CommonModule,
     MatSliderModule,
@@ -33,17 +33,12 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatListModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    // MatFormFieldModule,
     MatInputModule,
     MatChipsModule,
-    Component, ElementRef, ViewChild,
-    FormControl,
-    COMMA,
-    ENTER,
-    MatAutocompleteSelectedEvent, MatAutocomplete,
-    // MatChipInputEvent,
-    MatAutocompleteModule
-
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatMenuModule,
+    MatCardModule
   ],
   exports: [
     MatSliderModule,
@@ -54,14 +49,12 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatListModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    // MatFormFieldModule,
     MatInputModule,
-    MatChipsModule,
-    COMMA,
-    ENTER,
-    MatAutocompleteSelectedEvent, MatAutocomplete,
-    // MatChipInputEvent,
-    MatAutocompleteModule
+    MatChipsModule,   
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatMenuModule,
+    MatCardModule
   ]
 })
 export class MaterialModule { }

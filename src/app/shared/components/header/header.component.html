@@ -1,4 +1,5 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary"
+    class="mat-toolbar-header mat-elevation-z18">
     <span>Contact Manager</span>
     <span class="header-spacer"></span>
     <div>
@@ -6,6 +7,14 @@
             <mat-icon>home</mat-icon>
         </a>
         <a mat-button routerLink="/demo">Material Demo</a>
+        <a mat-button routerLink="/contacts">contacts</a>
+
+        <!-- <button mat-button [matMenuTriggerFor]="contacts" routerLink="/contacts">Contacts</button>
+        <mat-menu #contacts="matMenu">
+            <a mat-menu-item routerLink="/contacts/add">Add Contacts</a>
+            <a mat-menu-item routerLink="/contacts/view">View Contacts</a>
+        </mat-menu> -->
+
         <button mat-button>About</button>
         <span class="header-button-row">
             <button mat-raised-button color='accent'>

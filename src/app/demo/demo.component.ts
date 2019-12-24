@@ -1,10 +1,10 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { MatAutocompleteSelectedEvent, MatChipInputEvent, MatAutocomplete } from '@angular/material';
-import { startWith, map } from 'rxjs/operators';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { ENTER, COMMA } from '@angular/cdk/keycodes';
-
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { map, startWith } from 'rxjs/operators';
+import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
+import { MatChipInputEvent } from '@angular/material/chips';
 
 export interface Section {
   name: string;
@@ -16,26 +16,9 @@ export interface Section {
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.css']
 })
+
 export class DemoComponent implements OnInit {
-
-  visible = true;
-  selectable = true;
-  removable = true;
-  addOnBlur = true;
-  separatorKeysCodes: number[] = [ENTER, COMMA];
-  fruitCtrl = new FormControl();
-  filteredFruits: Observable<string[]>;
-  fruits: string[] = ['Lemon'];
-  allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
-
-  @ViewChild('fruitInput', {static: false}) fruitInput: ElementRef<HTMLInputElement>;
-  @ViewChild('auto', {static: false}) matAutocomplete: MatAutocomplete;
-  constructor() {
-    this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
-      startWith(null),
-      map((fruit: string | null) => fruit ? this._filter(fruit) : this.allFruits.slice()));
-   }
-   folders: Section[] = [
+  folders: Section[] = [
     {
       name: 'Photos',
       updated: new Date('1/1/16'),
@@ -59,6 +42,26 @@ export class DemoComponent implements OnInit {
       updated: new Date('1/18/16'),
     }
   ];
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  separatorKeysCodes: number[] = [ENTER, COMMA];
+  fruitCtrl = new FormControl();
+  filteredFruits: Observable<string[]>;
+  fruits: string[] = ['Lemon'];
+  allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+
+  @ViewChild('fruitInput', { static: false }) fruitInput: ElementRef<HTMLInputElement>;
+  @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
+
+  constructor() {
+    this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
+      startWith(null),
+      map((fruit: string | null) => fruit ? this._filter(fruit) : this.allFruits.slice()));
+  }
+  ngOnInit() {
+  }
   add(event: MatChipInputEvent): void {
     // Add fruit only when MatAutocomplete is not open
     // To make sure this does not conflict with OptionSelected Event
@@ -99,10 +102,4 @@ export class DemoComponent implements OnInit {
 
     return this.allFruits.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
   }
-  ngOnInit() {
-  }
-
 }
-
-  
-

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Contact } from './contact';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +28,7 @@ export class ContactService {
     const createContactPromise = new Promise( (resolve, reject) =>{
       this.http.post(this.REST_API_URL, contactData)
             .toPromise()
-            .then( ( res: any) => {
+            .then( ( res: Contact) => {
               console.log(res);
               resolve(res);
             })
@@ -39,22 +41,22 @@ export class ContactService {
             });
     } );
 
-    return createContactPromise;
+    return createContactPromise as Promise<Contact>;
 
     
   }
 
-  getContacts(){
+  getContacts(): Observable<Contact[]>{
     return this.http.get(this.REST_API_URL)
-    .pipe( map((res: any) =>{
+    .pipe( map((res: Contact[]) =>{
         console.log(res);      
         return res;
       }));
   }
 
-  getContactByID(id:number){
+  getContactByID(id:number): Observable<Contact>{
     return this.http.get(this.REST_API_URL+"/"+id)
-    .pipe( map((res: any) =>{
+    .pipe( map((res: Contact) =>{
       console.log(res);      
       return res;
     }));
@@ -78,7 +80,7 @@ export class ContactService {
           console.log('Its Over');
         });
     });
-    return updateContactPromise;
+    return updateContactPromise as Promise<any>;
 
   }
 

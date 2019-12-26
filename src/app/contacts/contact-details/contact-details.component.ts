@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-// import { getDiffieHellman } from 'crypto';
 import { ActivatedRoute } from '@angular/router';
-// import { ContactsComponent } from '../contacts.component';
 import { ContactService } from '../contact.service';
 import { MatDialog } from '@angular/material';
 import { EditContactDialogComponent } from './edit-contact-dialog/edit-contact-dialog.component';
-import { ThrowStmt } from '@angular/compiler';
+import { Contact } from '../contact';
 
 
 
@@ -16,21 +14,25 @@ import { ThrowStmt } from '@angular/compiler';
 })
 export class ContactDetailsComponent implements OnInit {
   id: any;
-  contact: any;
+  contact: Contact;
   isSaved: boolean;
   constructor(private router: ActivatedRoute, private contactService: ContactService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.id = this.router.snapshot.paramMap.get("id");
 
-    this.contactService.getContactByID(this.id)
-      .subscribe((res: any) => {
-        console.log(res);
-        this.contact = res;
-
-      });
+    this.loadContactData();
 
   }
+
+  loadContactData(){
+    this.contactService.getContactByID(this.id)
+      .subscribe((res: Contact) => {
+        console.log(res);
+        this.contact = res;
+      });
+  }
+  
   openEditDialog() {
     const dialogRef = this.dialog.open(EditContactDialogComponent,
       {
@@ -39,13 +41,13 @@ export class ContactDetailsComponent implements OnInit {
       });
 
     dialogRef.afterClosed().subscribe(async (updatedContactData: any) => {
-      alert('check');
+      // alert('check');
       console.log(updatedContactData);
 
       if (updatedContactData != 'nope') {
         const status: any = await this.contactService.updateContact(updatedContactData)
         if (status && status.id) {
-          this.contact = status;
+          this.loadContactData();
           console.log('status');
           this.isSaved = true;
         } else {

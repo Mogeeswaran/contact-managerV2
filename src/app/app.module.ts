@@ -10,13 +10,12 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { MaterialModule } from './shared/modules/material/material.module';
 import { HomeComponent } from './home/home.component';
 import { DemoComponent } from './demo/demo.component';
-import { ContactsComponent } from './contacts/contacts.component';
-import { AddContactComponent } from './contacts/add-contact/add-contact.component';
-import { ContactDetailsComponent } from './contacts/contact-details/contact-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EditContactDialogComponent } from './contacts/contact-details/edit-contact-dialog/edit-contact-dialog.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { ContactModule } from './contacts/contact.module';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 
 
@@ -30,22 +29,21 @@ import { SignupComponent } from './auth/signup/signup.component';
     FooterComponent,
     HomeComponent,
     DemoComponent,
-    ContactsComponent,
-    AddContactComponent,
-    ContactDetailsComponent,
     EditContactDialogComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    PageNotFoundComponent
     
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
+    BrowserModule,    
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ContactModule,
+    AppRoutingModule
   ],
   providers: [],
   entryComponents: [EditContactDialogComponent],

@@ -14,6 +14,9 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { AddContactComponent } from './contacts/add-contact/add-contact.component';
 import { ContactDetailsComponent } from './contacts/contact-details/contact-details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EditContactDialogComponent } from './contacts/contact-details/edit-contact-dialog/edit-contact-dialog.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 
 
@@ -29,7 +32,10 @@ import { HttpClientModule } from '@angular/common/http';
     DemoComponent,
     ContactsComponent,
     AddContactComponent,
-    ContactDetailsComponent
+    ContactDetailsComponent,
+    EditContactDialogComponent,
+    LoginComponent,
+    SignupComponent
     
   ],
   imports: [
@@ -42,6 +48,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [],
+  entryComponents: [EditContactDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

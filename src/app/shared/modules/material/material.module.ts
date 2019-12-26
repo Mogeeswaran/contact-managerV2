@@ -16,6 +16,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -38,7 +39,8 @@ import {MatInputModule} from '@angular/material/input';
     MatAutocompleteModule,
     MatFormFieldModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ],
   exports: [
     MatSliderModule,
@@ -54,7 +56,8 @@ import {MatInputModule} from '@angular/material/input';
     MatAutocompleteModule,
     MatFormFieldModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule { }

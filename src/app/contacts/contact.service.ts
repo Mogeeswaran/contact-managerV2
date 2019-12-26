@@ -52,12 +52,34 @@ export class ContactService {
       }));
   }
 
-  getContactDetail(id:any){
+  getContactByID(id:number){
     return this.http.get(this.REST_API_URL+"/"+id)
     .pipe( map((res: any) =>{
       console.log(res);      
       return res;
     }));
+  }
+
+  updateContact(upddateableContactData){
+    console.log(upddateableContactData);
+
+    const updateContactPromise = new Promise( (resolve, reject) =>{  
+      this.http.put(this.REST_API_URL+'/'+upddateableContactData.id, upddateableContactData)
+        .toPromise()
+        .then((res: any) => {
+          console.log(res);
+          resolve(res);
+        })
+        .catch((err: any) => {
+          console.log(err);
+          reject(err);
+        })
+        .finally(() => {
+          console.log('Its Over');
+        });
+    });
+    return updateContactPromise;
+
   }
 
   
